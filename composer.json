@@ -1,0 +1,17 @@
+{
+    "name": "irinavaronka/bankas3",
+    "description": "bank",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Irinavaronka\\Bankas3\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "IrinaVaronka",
+            "email": "varonkairina@gmail.com"
+        }
+    ],
+    "require": {}
+}
