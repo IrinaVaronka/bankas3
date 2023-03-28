@@ -2,6 +2,7 @@
 namespace App;
 
 use App\Controllers\HomeController;
+use App\Controllers\ClientsController;
 
 
 class App {
@@ -22,6 +23,10 @@ private static function router(array $url)
 
     if ($method == 'GET' && count($url) == 1 && $url[0] === '') {
         return (new HomeController)->home();
+    }
+
+    if ($method == 'GET' && count($url) == 2 && $url[0] === 'clients' && $url[1] === 'create') {
+        return (new ClientsController)->create();
     }
 
     else {

@@ -10838,4 +10838,7 @@ body {
 .home h1 .sub, .home .h1 .sub {
   color: crimson;
   font-size: 30px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
