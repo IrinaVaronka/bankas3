@@ -29,6 +29,15 @@ private static function router(array $url)
         return (new ClientsController)->create();
     }
 
+    if ($method == 'POST' && count($url) == 2 && $url[0] === 'clients' && $url[1] === 'create') {
+        return (new ClientsController)->store();
+    }
+
+    if ($method == 'POST' && count($url) == 1 && $url[0] === 'clients') {
+        return (new ClientsController)->index();
+    }
+
+
     else {
         return '<h1>404 PAGE NOT FOUND</h1>';
     }
@@ -46,6 +55,12 @@ private static function router(array $url)
         $html = ob_get_contents();
         ob_end_clean();
         return $html;
+    }
+
+    public static function redirect($url)
+    {
+        header('Location:' . URL . $url);
+        return '';
     }
 
 

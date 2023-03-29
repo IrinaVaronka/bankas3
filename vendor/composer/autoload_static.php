@@ -6,6 +6,37 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit908019646ae4cf00e875cd198944465b
 {
+    public static $files = array (
+        'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
+    );
+
+    public static $prefixLengthsPsr4 = array (
+        'R' => 
+        array (
+            'Ramsey\\Uuid\\' => 12,
+            'Ramsey\\Collection\\' => 18,
+        ),
+        'B' => 
+        array (
+            'Brick\\Math\\' => 11,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Ramsey\\Uuid\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ramsey/uuid/src',
+        ),
+        'Ramsey\\Collection\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ramsey/collection/src',
+        ),
+        'Brick\\Math\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/brick/math/src',
+        ),
+    );
+
     public static $fallbackDirsPsr4 = array (
         0 => __DIR__ . '/../..' . '/',
     );
@@ -17,6 +48,8 @@ class ComposerStaticInit908019646ae4cf00e875cd198944465b
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit908019646ae4cf00e875cd198944465b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit908019646ae4cf00e875cd198944465b::$prefixDirsPsr4;
             $loader->fallbackDirsPsr4 = ComposerStaticInit908019646ae4cf00e875cd198944465b::$fallbackDirsPsr4;
             $loader->classMap = ComposerStaticInit908019646ae4cf00e875cd198944465b::$classMap;
 

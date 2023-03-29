@@ -1,9 +1,9 @@
 <ul class="nav justify-content-end">
   <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Active</a>
+    <a class="nav-link active" aria-current="page" href="<?=URL ?>">Home</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="<?=URL ?>clients/create">Create new account</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Link</a>
