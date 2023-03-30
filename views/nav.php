@@ -6,7 +6,7 @@
     <a class="nav-link" href="<?=URL ?>clients/create">Create new account</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="<?=URL ?>clients">Clients List</a>
   </li>
   <li class="nav-item">
     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
