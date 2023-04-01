@@ -3,25 +3,25 @@
         <div class="col-8">
             <div class="card mt-5">
                 <div class="card-header">
-                    <h1>Add Client</h1>
+                    <h1 class="text-center">Add Funds</h1>
                 </div>
                 <div class="card-body">
-                    <form action="<?= URL ?>clients/edit/<?= $client['id'] ?>" method="post">
-                        <div class="mb-3">
-                            <label class="form-label">Client Name</label>
-                            <input type="text" class="form-control" name="name" value="<?= $client['name'] ?>">
-                            <div class="form-text">Please add client name here</div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Client Surname</label>
-                            <input type="text" class="form-control" name="surname"  value="<?= $client['surname'] ?>">
-                            <div class="form-text">Please add client surname here</div>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                    <form class="form-create" action="<?= URL ?>clients/edit/<?= $client['id'] ?>" method="post">
+                        <label>Client`s name: </label>
+                        <input type="text" name="name" class="form-control" readonly value="<?= $client['name'] ?>">
+                        <label>Client`s surname: </label>
+                        <input type="text" name="surname" class="form-control" readonly value="<?= $client['surname'] ?>">
+                        <label>Add funds, EUR: </label>
+                        <input type="text" name="amount" class="form-control"  value="<?= $client['amount'] ?>">
+                        <button type="submit" class="btn btn-lg btn-primary btn-block">Add</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+        
+          
+   

@@ -24,7 +24,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 70vh;
     .card-header {
         display: flex;
         align-items: center;
@@ -47,6 +47,16 @@ a.nav-link.log {
     border: solid 1px black;
     padding-bottom: 0;
     line-height: 19px;
+}
+
+.form-create {
+    max-width: 400px;
+    padding: 15px;
+    margin: 0, auto;
+    color: rgb(14, 73, 181);
+    display: flex;
+    flex-direction: column;
+
 }
 
 

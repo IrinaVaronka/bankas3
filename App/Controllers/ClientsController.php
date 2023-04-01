@@ -36,6 +36,9 @@ class ClientsController {
         $data = [];
         $data['name'] = $_POST['name'];
         $data['surname'] = $_POST['surname'];
+        $data['account'] = $_POST['account'];
+        $data['idPerson'] = $_POST['idPerson'];
+        $data['amount'] = $_POST['amount'];
         (new Json)->create($data); 
         Messages::msg()->addMessage('New client was created', 'success');
         return App::redirect('clients');
@@ -66,8 +69,11 @@ class ClientsController {
         $data = [];
         $data['name'] = $_POST['name'];
         $data['surname'] = $_POST['surname'];
+        $data['account'] = $_POST['account'];
+        $data['idPerson'] = $_POST['idPerson'];
+        $data['amount'] += $_POST['amount'];
         (new Json)->update($id, $data); 
-        Messages::msg()->addMessage('New client was edited', 'warning');
+        Messages::msg()->addMessage('The client was edited', 'warning');
         return App::redirect('clients');
     }
 

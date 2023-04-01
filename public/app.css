@@ -10829,18 +10829,11 @@ body {
   width: 100%;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 70vh;
 }
 .home h1, .home .h1 {
-  color: skyblue;
-  font-size: 150px;
-}
-.home h1 .sub, .home .h1 .sub {
-  color: crimson;
-  font-size: 30px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
+  color: rgb(18, 95, 126);
+  font-size: 100px;
 }
 
 .client-line {
@@ -10876,7 +10869,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 70vh;
 }
 .login .card-header {
   display: flex;
@@ -10899,4 +10892,13 @@ a.nav-link.log {
   border: solid 1px black;
   padding-bottom: 0;
   line-height: 19px;
+}
+
+.form-create {
+  max-width: 400px;
+  padding: 15px;
+  margin: 0, auto;
+  color: rgb(14, 73, 181);
+  display: flex;
+  flex-direction: column;
 }
