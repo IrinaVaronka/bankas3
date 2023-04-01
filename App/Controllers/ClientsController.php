@@ -71,7 +71,7 @@ class ClientsController {
         $data['surname'] = $_POST['surname'];
         $data['account'] = $_POST['account'];
         $data['idPerson'] = $_POST['idPerson'];
-        $data['amount'] += $_POST['amount'];
+        $data['amount'] = $_POST['amount'];
         (new Json)->update($id, $data); 
         Messages::msg()->addMessage('The client was edited', 'warning');
         return App::redirect('clients');

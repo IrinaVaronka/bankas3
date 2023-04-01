@@ -36,6 +36,7 @@ private static function router(array $url)
         return (new LoginController)->logout();
     }
 
+
     if ($method == 'GET' && count($url) == 1 && $url[0] === '') {
         return (new HomeController)->home();
     }
@@ -70,30 +71,31 @@ private static function router(array $url)
         return (new ClientsController)->delete($url[2]);
     }
 
+
     else {
         return '<h1>404 PAGE NOT FOUND</h1>';
     }
 }
 
-    public static function views($tmp, $data = [])
-    {
-        $path = __DIR__ . '/../views/';
-        extract($data);
+public static function views($tmp, $data = [])
+{
+    $path = __DIR__ . '/../views/';
+    extract($data);
 
-        ob_start();
-        require $path . 'top.php';
-        require $path . $tmp . '.php';
-        require $path . 'bottom.php';
-        $html = ob_get_contents();
-        ob_end_clean();
-        return $html;
-    }
+    ob_start();
+    require $path . 'top.php';
+    require $path . $tmp . '.php';
+    require $path . 'bottom.php';
+    $html = ob_get_contents();
+    ob_end_clean();
+    return $html;
+}
 
-    public static function redirect($url)
-    {
-        header('Location:' . URL . $url);
-        return '';
-    }
+public static function redirect($url)
+{
+    header('Location:' . URL . $url);
+    return '';
+}
 
 
 }

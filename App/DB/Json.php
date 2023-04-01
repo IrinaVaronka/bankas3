@@ -6,12 +6,13 @@ namespace App\DB;
 class Json implements DataBase {
 
     private $data;
-
+    
     public function __construct()
     {
-        if(!file_exists(__DIR__ .'/data.json')) {
+        if (!file_exists(__DIR__ .'/data.json')) {
             file_put_contents(__DIR__ .'/data.json', json_encode([]));
         }
+
         $this->data = json_decode(file_get_contents(__DIR__ .'/data.json'), 1);
     }
 
@@ -28,7 +29,6 @@ class Json implements DataBase {
         $this->data[] = $clientData;
     }
 
-
     function update(int $clientId, array $clientData) : void
     {
         $clientData['id'] = $clientId;
@@ -41,7 +41,6 @@ class Json implements DataBase {
         $this->data = array_values($this->data);
     }
 
-
     function show(int $clientId) : array
     {
         $c = array_filter($this->data, fn($d) => $d['id'] == $clientId);
@@ -52,4 +51,5 @@ class Json implements DataBase {
     {
         return $this->data;
     }
+
 }
