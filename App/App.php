@@ -3,6 +3,7 @@ namespace App;
 
 use App\Controllers\HomeController;
 use App\Controllers\ClientsController;
+use App\Controllers\LoginController;
 
 
 class App {
@@ -10,6 +11,8 @@ class App {
 public static function process()
 {
     //print_r($_SERVER['REQUEST_URI']);  find address;
+
+    session_start();
 
     $url = explode('/', $_SERVER['REQUEST_URI']); // make an array;
     array_shift($url);  //remove first empty '/' ;
@@ -21,9 +24,23 @@ private static function router(array $url)
 {
     $method = $_SERVER['REQUEST_METHOD'];
 
+    if ($method == 'GET' && count($url) == 1 && $url[0] === 'login') {
+        return (new LoginController)->show();
+    }
+
+    if ($method == 'POST' && count($url) == 1 && $url[0] === 'login') {
+        return (new LoginController)->login();
+    }
+
+    if ($method == 'POST' && count($url) == 1 && $url[0] === 'logout') {
+        return (new LoginController)->logout();
+    }
+
     if ($method == 'GET' && count($url) == 1 && $url[0] === '') {
         return (new HomeController)->home();
     }
+
+
 
     if ($method == 'GET' && count($url) == 2 && $url[0] === 'clients' && $url[1] === 'create') {
         return (new ClientsController)->create();
@@ -47,6 +64,10 @@ private static function router(array $url)
 
     if ($method == 'POST' && count($url) == 3 && $url[0] === 'clients' && $url[1] === 'edit') {
         return (new ClientsController)->update($url[2]);
+    }
+
+    if ($method == 'POST' && count($url) == 3 && $url[0] === 'clients' && $url[1] === 'delete') {
+        return (new ClientsController)->delete($url[2]);
     }
 
     else {
