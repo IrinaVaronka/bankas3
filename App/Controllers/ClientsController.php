@@ -14,7 +14,8 @@ class ClientsController {
             die;
         }
     }
-
+    
+    
     public function index()
     {
         $clients = (new Json)->showAll();
@@ -26,8 +27,9 @@ class ClientsController {
 
     public function create()
     {
+        
         return App::views('clients/create', [
-            'title' => 'New account'
+            'title' => 'New Client'
         ]);
     }
 
@@ -39,7 +41,7 @@ class ClientsController {
         $data['account'] = $_POST['account'];
         $data['idPerson'] = $_POST['idPerson'];
         $data['amount'] = $_POST['amount'];
-        (new Json)->create($data); 
+        (new Json)->create($data);
         Messages::msg()->addMessage('New client was created', 'success');
         return App::redirect('clients');
     }
@@ -59,7 +61,7 @@ class ClientsController {
         $client = (new Json)->show($id);
 
         return App::views('clients/edit', [
-            'title' => 'Edit Client',
+            'title' => 'Edit Amount',
             'client' => $client
         ]);
     }
@@ -73,15 +75,18 @@ class ClientsController {
         $data['idPerson'] = $_POST['idPerson'];
         $data['amount'] = $_POST['amount'];
         (new Json)->update($id, $data); 
-        Messages::msg()->addMessage('The client was edited', 'warning');
+        Messages::msg()->addMessage('Amount was edited', 'warning');
         return App::redirect('clients');
     }
 
     public function delete($id)
     {
         (new Json)->delete($id);
-        Messages::msg()->addMessage('The client was deleted', 'success');
+        Messages::msg()->addMessage('The client was deleted', 'warning');
         return App::redirect('clients');
     }
+
+
+
 
 }
