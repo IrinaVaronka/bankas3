@@ -119,6 +119,12 @@ class ClientsController {
     public function updateDeduct($id)
     {
         $client = (new Json)->show($id);
+        if ($client['amount'] < $_POST['amount']) {
+            Messages::msg()->addMessage('You want to deduct too much!', 'warning');
+            return App::redirect('clients');
+        }
+
+        
         $currentBalance = $client['amount'];
         $newBalanceMinus = $currentBalance - $_POST['amount'];
         $data = [];
@@ -127,6 +133,8 @@ class ClientsController {
         $data['account'] = $client['account'];
         $data['idPerson'] = $client['idPerson'];
         $data['amount'] = $newBalanceMinus;
+
+        
         (new Json)->update($id, $data); 
         Messages::msg()->addMessage('Amount was deducted', 'warning');
         return App::redirect('clients');
@@ -135,19 +143,14 @@ class ClientsController {
     public function delete($id) //neveikia valodacija!
     {
         $client = (new Json)->show($id);
-        foreach($clients as $client) {
-            if ($client['amount'] === 0) {
-                 Messages::msg()->addMessage('An account with funds cannot be deleted.', 'danger');
-                return App::redirect('clients');
-             }
+        if ($client['amount'] > 0) {
+            Messages::msg()->addMessage('Client account not empty!', 'warning');
+            return App::redirect('clients');
         }
-        
-        (new Json)->delete($id);  
-        Messages::msg()->addMessage('The account was successfully deleted.', 'warning');
+        (new Json)->delete($id);
+        Messages::msg()->addMessage('The client was deleted!', 'success');
         return App::redirect('clients');
     }
-
-
-
-
 }
+
+
