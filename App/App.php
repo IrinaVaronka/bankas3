@@ -67,6 +67,14 @@ private static function router(array $url)
         return (new ClientsController)->update($url[2]);
     }
 
+    if ($method == 'GET' && count($url) == 3 && $url[0] === 'clients' && $url[1] === 'editDeduct') {
+        return (new ClientsController)->editDeduct($url[2]);
+    }
+
+    if ($method == 'POST' && count($url) == 3 && $url[0] === 'clients' && $url[1] === 'editDeduct') {
+        return (new ClientsController)->updateDeduct($url[2]);
+    }
+
 
     if ($method == 'POST' && count($url) == 3 && $url[0] === 'clients' && $url[1] === 'delete') {
         return (new ClientsController)->delete($url[2]);

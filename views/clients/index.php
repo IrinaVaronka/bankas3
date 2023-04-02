@@ -26,7 +26,7 @@
                     <td><?= $client['amount'] ?></td>
                     <th scope="col"><a class="btn btn-success" href="<?= URL ?>clients/show/<?= $client['id'] ?>" class="btn btn-info">Show info</a></th>
                     <th scope="col"><a class="btn btn-success" href="<?= URL ?>clients/edit/<?= $client['id'] ?>" class="btn btn-success">Add funds</a></th>
-                    <th scope="col"><a class="btn btn-success" href="<?= URL ?>clients/edit/<?= $client['id'] ?>" class="btn btn-success">Deduct funds</a></th>
+                    <th scope="col"><a class="btn btn-success" href="<?= URL ?>clients/editDeduct/<?= $client['id'] ?>" class="btn btn-success">Deduct funds</a></th>
                     </tr>
             </tbody>
             </table>

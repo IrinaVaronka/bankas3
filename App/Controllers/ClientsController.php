@@ -98,11 +98,37 @@ class ClientsController {
         $data = [];
         $data['name'] = $_POST['name'];
         $data['surname'] = $_POST['surname'];
-        $data['account'] = $_POST['account'];
-        $data['idPerson'] = $_POST['idPerson'];
+        $data['account'] = $client['account'];
+        $data['idPerson'] = $client['idPerson'];
         $data['amount'] = $newBalancePlus;
         (new Json)->update($id, $data); 
         Messages::msg()->addMessage('Amount was added', 'warning');
+        return App::redirect('clients');
+    }
+
+    public function editDeduct($id)
+    {
+        $client = (new Json)->show($id);
+
+        return App::views('clients/editDeduct', [
+            'title' => 'Deduct Amount',
+            'client' => $client
+        ]);
+    }
+
+    public function updateDeduct($id)
+    {
+        $client = (new Json)->show($id);
+        $currentBalance = $client['amount'];
+        $newBalanceMinus = $currentBalance - $_POST['amount'];
+        $data = [];
+        $data['name'] = $_POST['name'];
+        $data['surname'] = $_POST['surname'];
+        $data['account'] = $client['account'];
+        $data['idPerson'] = $client['idPerson'];
+        $data['amount'] = $newBalanceMinus;
+        (new Json)->update($id, $data); 
+        Messages::msg()->addMessage('Amount was deducted', 'warning');
         return App::redirect('clients');
     }
 
